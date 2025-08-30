@@ -8,7 +8,6 @@ using Avalonia.Controls.Shapes;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Media;
-using MsBox.Avalonia;
 using ImageFanReloaded.Core.Controls;
 using ImageFanReloaded.Core.Controls.Factories;
 using ImageFanReloaded.Core.CustomEventArgs;
@@ -20,6 +19,7 @@ using ImageFanReloaded.Core.TextHandling.Implementation;
 using ImageFanReloaded.ImageHandling.Extensions;
 using ImageFanReloaded.Keyboard;
 using ImageFanReloaded.Mouse;
+using Ursa.Controls;
 
 namespace ImageFanReloaded.Controls;
 
@@ -236,17 +236,14 @@ public partial class ImageEditWindow : Window, IImageEditView
 		else if (_hasUnsavedChanges)
 		{
 			e.Cancel = true;
-
-			var closeWindowMessageBox = MessageBoxManager.GetMessageBoxStandard(
-				"Unsaved image changes",
+			var result =  await MessageBox.ShowAsync(this, 
 				"You have unsaved image changes. Are you sure you want to close the window?",
-				MsBox.Avalonia.Enums.ButtonEnum.YesNoCancel,
-				MsBox.Avalonia.Enums.Icon.Question,
-				WindowStartupLocation.CenterOwner);
+				"Unsaved image changes",
+				MessageBoxIcon.Question,
+				MessageBoxButton.YesNoCancel
+			);
 
-			var closeWindowButtonResult = await closeWindowMessageBox.ShowWindowDialogAsync(this);
-
-			if (closeWindowButtonResult != MsBox.Avalonia.Enums.ButtonResult.Yes)
+			if (result != MessageBoxResult.Yes)
 			{
 				return;
 			}
@@ -809,14 +806,13 @@ public partial class ImageEditWindow : Window, IImageEditView
 				{
 					var imageToSaveFileName = GetFileNameFromPath(imageToSaveFilePath);
 
-					var saveImageAsErrorMessageBox = MessageBoxManager.GetMessageBoxStandard(
-						"Image save error",
+					await MessageBox.ShowAsync(
+						this,
 						string.Format(SaveImageErrorMessage, imageToSaveFileName),
-						MsBox.Avalonia.Enums.ButtonEnum.Ok,
-						MsBox.Avalonia.Enums.Icon.Error,
-						WindowStartupLocation.CenterOwner);
-
-					await saveImageAsErrorMessageBox.ShowWindowDialogAsync(this);
+						"Image save error",
+						icon: MessageBoxIcon.Error,
+						button: MessageBoxButton.OK
+					);
 				}
 			}
 		});
@@ -879,14 +875,13 @@ public partial class ImageEditWindow : Window, IImageEditView
 		}
 		catch
 		{
-			var applyTransformErrorMessageBox = MessageBoxManager.GetMessageBoxStandard(
-				"Image transformation error",
+			await MessageBox.ShowAsync(
+				this,
 				TransformImageErrorMessage,
-				MsBox.Avalonia.Enums.ButtonEnum.Ok,
-				MsBox.Avalonia.Enums.Icon.Error,
-				WindowStartupLocation.CenterOwner);
-
-			await applyTransformErrorMessageBox.ShowWindowDialogAsync(this);
+				"Image transformation error",
+				icon: MessageBoxIcon.Error,
+				button: MessageBoxButton.OK
+			);
 		}
 	}
 
