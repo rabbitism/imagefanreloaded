@@ -1,5 +1,6 @@
 <UserControl xmlns="https://github.com/avaloniaui"
 			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:u="https://irihi.tech/ursa"
 			 x:Class="ImageFanReloaded.Controls.ContentTabItem">
 	<Grid>
 		<Grid.RowDefinitions>
@@ -7,7 +8,7 @@
 			<RowDefinition Height="*"/>
 		</Grid.RowDefinitions>
 
-		<StackPanel Grid.Row="0"
+		<u:ButtonGroup Grid.Row="0"
 					Classes="HorizontalStackPanel"
 					HorizontalAlignment="Right">
 			<Button Name="_slideshowButton"
@@ -29,7 +30,7 @@
 			<Button Name="_aboutButton"
 					Content="About"
 					Click="OnAboutButtonClicked"/>
-		</StackPanel>
+		</u:ButtonGroup>
 
 		<Grid Name="_contentGrid"
 			  Grid.Row="1"

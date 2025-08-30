@@ -21,6 +21,7 @@
 
 		<StackPanel Grid.Row="0"
 					Classes="HorizontalStackPanel"
+					Orientation="Horizontal"
 					HorizontalAlignment="Center">
 			<Button Name="_undoButton"
 					Content="Undo"
@@ -111,6 +112,7 @@
 
 		<StackPanel Grid.Row="1"
 					Classes="HorizontalStackPanel"
+					Orientation="Horizontal"
 					HorizontalAlignment="Center">
 			<Button Name="_cropButton"
 					Content="Crop"
@@ -126,6 +128,7 @@
 
 		<StackPanel Grid.Row="2"
 					Classes="HorizontalStackPanel"
+					Orientation="Horizontal"
 					HorizontalAlignment="Center">
 			<TextBlock VerticalAlignment="Center"
 					   Text="Percentage:"/>
