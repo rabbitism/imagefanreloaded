@@ -9,10 +9,11 @@ using ImageFanReloaded.Core.Mouse;
 using ImageFanReloaded.Core.Settings;
 using ImageFanReloaded.Core.Synchronization;
 using ImageFanReloaded.Keyboard;
+using Ursa.Controls;
 
 namespace ImageFanReloaded.Controls;
 
-public partial class MainWindow : Window, IMainView
+public partial class MainWindow : UrsaWindow, IMainView
 {
 	public MainWindow()
 	{

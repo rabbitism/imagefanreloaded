@@ -5,8 +5,8 @@
 			 x:Class="ImageFanReloaded.App"
 			 RequestedThemeVariant="Default">
 	<Application.Styles>
-		<semi:SemiTheme/>
-		<u-semi:SemiTheme/>
+		<semi:SemiTheme Locale="en-US" />
+		<u-semi:SemiTheme Locale="en-US" />
 		<Style Selector="Button">
 			<Setter Property="BorderThickness" Value="0"/>
 			<Setter Property="CornerRadius" Value="5"/>
